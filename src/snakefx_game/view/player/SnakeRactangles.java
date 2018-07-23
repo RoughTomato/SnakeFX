@@ -3,8 +3,7 @@ package snakefx_game.view.player;
 import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import snakefx_game.player.Body;
-import snakefx_game.player.Head;
+import snakefx_game.player.BodyPOJO;
 
 /**
  *
@@ -57,18 +56,21 @@ public class SnakeRactangles {
     
     private void generateSnakeBody(int index) {
         if(index == 0) {
-            this.bodyParts.add(new SnakeRectangle(new Head(300,300),
+            this.bodyParts.add(new SnakeRectangle(new BodyPOJO(300,300),
                     Color.CORNFLOWERBLUE
             ));
         }
         else if((index % 10) == 0) {
-            this.bodyParts.add(new SnakeRectangle(new Body(300,(300 + (index * 10))),
-                    Color.DARKOLIVEGREEN
+            this.bodyParts.add(new SnakeRectangle(new BodyPOJO(300,
+                            (300 + (index * 10))),
+                            Color.DARKOLIVEGREEN
             ));
         }
         else {
-            this.bodyParts.add(new SnakeRectangle(new Body(300,(300 + (index * 10))),
-            Color.GRAY));
+            this.bodyParts.add(new SnakeRectangle(new BodyPOJO(300,
+                            (300 + (index * 10))),
+                            Color.GRAY
+            ));
         }
         
     }

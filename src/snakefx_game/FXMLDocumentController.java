@@ -16,7 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import snakefx_game.player.Player;
+import snakefx_game.listeners.KeyPressedListener;
+import snakefx_game.player.PlayerPOJO;
 import snakefx_game.view.player.SnakeRactangles;
 
 /**
@@ -45,14 +46,10 @@ public class FXMLDocumentController implements Initializable {
 
     private Scene scene;
     private SnakeRactangles snake;
-    private Player player;
+    private PlayerPOJO player;
     private AnimationTimer timer;
     private final int CHAR_LIMIT = 18;
-    
-    public boolean up = true;
-    public boolean down = false;
-    public boolean left = false;
-    public boolean right = false;
+    private KeyPressedListener keyListener;
     
     @FXML
     void onRestartPressed(ActionEvent event) {
@@ -62,7 +59,6 @@ public class FXMLDocumentController implements Initializable {
         this.score.setText(this.player.getScoreToString());
         this.player.setName("");
         this.snake.clearSnakeBody();
-        this.restartStates();
         nameField.setText(this.player.getName());
         nameField.setPromptText("Name");
         nameField.setVisible(true);
@@ -73,10 +69,10 @@ public class FXMLDocumentController implements Initializable {
     void onStartPressed(ActionEvent event) {
         nameField.setVisible(false);
         startButton.setVisible(false);
-        player = new Player(nameField.getText());
+        player = new PlayerPOJO(nameField.getText());
         scene = gameBoard.getScene();
         snake = new SnakeRactangles(5,gameBoard);
-        gameBoardListners();
+        keyListener = new KeyPressedListener(scene);
         game();
     }
     
@@ -96,21 +92,26 @@ public class FXMLDocumentController implements Initializable {
         });
     }
     
-    private void game() {
-        
+    private void game() {  
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 double dx = 0;
                 double dy = 0;
-                if(up)
-                    dy -= 10;
-                if(down)
-                    dy += 10;
-                if(right)
-                    dx += 10;
-                if(left)
-                    dx -= 10;
+                switch(keyListener.getDirection()) {
+                    case UP:
+                        dy -= 10;
+                    break;
+                    case DOWN:
+                        dy += 10;
+                    break;
+                    case RIGHT:
+                        dx += 10;
+                    break;
+                    case LEFT:
+                        dx -= 10;
+                    break;
+                }
                 try {
                     Thread.sleep(100); //for that retro feel to it.
                 } catch (InterruptedException ex) {
@@ -121,59 +122,8 @@ public class FXMLDocumentController implements Initializable {
                         snake.getSnakeHeadX() + dx,
                         snake.getSnakeHeadY() + dy
                 );
-                
             }
         };
         timer.start();
-    }
-    
-    private void gameBoardListners(){
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case W:
-                        if(down != true) {
-                            up = true;
-                            down = false;
-                            left = false;
-                            right = false;
-                        }
-                    break;
-                    case S:
-                        if(up != true) {
-                            up = false;
-                            down = true;
-                            left = false;
-                            right = false;
-                        }
-                    break;
-                    case A:
-                        if(right != true) {
-                            left  = true;
-                            up    = false;
-                            down  = false;
-                            right = false;
-                        }
-                    break;
-                    case D:
-                        if(left != true) {
-                            left  = false;
-                            up    = false;
-                            down  = false;
-                            right = true;
-                        }
-                    break;
-                }
-            }
-        });
-
-    }
-
-    private void restartStates() {
-        up = true;
-        left = false;
-        down = false;
-        right = false;
     }
 }

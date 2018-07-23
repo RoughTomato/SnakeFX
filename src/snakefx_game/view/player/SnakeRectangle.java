@@ -1,30 +1,27 @@
 package snakefx_game.view.player;
 
-import java.util.ArrayList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import snakefx_game.player.Body;
-import snakefx_game.player.Head;
-import snakefx_game.player.Snake;
+import snakefx_game.player.BodyPOJO;
 /**
  *
  * @author RoughTomato
  */
 public class SnakeRectangle {
-    private Snake snakeBodyPart;
+    private BodyPOJO snakeBodyPart;
     private Rectangle rect;
     private Color color;
 
     private final int RECT_HEIGHT = 10;
     private final int RECT_WIDTH = 10;
     
-    public SnakeRectangle(Snake snakeBodyPart){
+    public SnakeRectangle(BodyPOJO snakeBodyPart){
         this.snakeBodyPart = snakeBodyPart;
         rect = new Rectangle(snakeBodyPart.getX(), snakeBodyPart.getY(),
                             RECT_WIDTH, RECT_HEIGHT);
     }
     
-    public SnakeRectangle(Snake snakeBodyPart, Color color){
+    public SnakeRectangle(BodyPOJO snakeBodyPart, Color color){
         this.snakeBodyPart = snakeBodyPart;
         rect = new Rectangle(snakeBodyPart.getX(), snakeBodyPart.getY(),
                             RECT_WIDTH, RECT_HEIGHT);
