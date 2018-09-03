@@ -1,0 +1,42 @@
+buildscript {
+    dependencies {
+        classpath group: 'de.dynamicfiles.projects.gradle.plugins', name: 'javafx-gradle-plugin', version: '8.8.2'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+
+    }
+}
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+apply plugin: 'javafx-gradle-plugin'
+
+jar {
+  manifest {
+    attributes(
+      "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
+  }
+}
+
+jfx {
+    // minimal requirement for jfxJar-task
+    sourceSets.main.java.srcDirs = ['src']
+    mainClass = 'snakefx_game.SnakeFX_Game'
+    version = '0.0.0'
+    jar {
+        manifest {
+            attributes(
+              'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+              'Main-Class': 'snakefx_game.SnakeFX_Game'
+            )
+          }
+    }
+    // minimal requirement for jfxNative-task
+    vendor = 'roughtomato'
+}
