@@ -1,9 +1,9 @@
-package snakefx_game.view.player;
+package main.java.view.player;
 
 import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import snakefx_game.player.BodyPOJO;
+import main.java.player.BodyPOJO;
 
 /**
  *

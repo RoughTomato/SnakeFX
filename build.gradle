@@ -27,13 +27,13 @@ jar {
 jfx {
     // minimal requirement for jfxJar-task
     sourceSets.main.java.srcDirs = ['src']
-    mainClass = 'snakefx_game.SnakeFX_Game'
+    mainClass = 'main.java.SnakeFX_Game'
     version = '0.0.0'
     jar {
         manifest {
             attributes(
               'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-              'Main-Class': 'snakefx_game.SnakeFX_Game'
+              'Main-Class': 'main.java.SnakeFX_Game'
             )
           }
     }

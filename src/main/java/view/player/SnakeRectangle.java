@@ -1,8 +1,8 @@
-package snakefx_game.view.player;
+package main.java.view.player;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import snakefx_game.player.BodyPOJO;
+import main.java.player.BodyPOJO;
 /**
  *
  * @author RoughTomato

@@ -1,4 +1,4 @@
-package snakefx_game.player;
+package main.java.player;
 
 /**
  *

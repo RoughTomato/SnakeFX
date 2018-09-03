@@ -1,4 +1,4 @@
-package snakefx_game.listeners;
+package main.java.listeners;
 
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

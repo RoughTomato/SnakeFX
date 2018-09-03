@@ -1,4 +1,4 @@
-package snakefx_game;
+package main.java;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,9 +16,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import snakefx_game.listeners.KeyPressedListener;
-import snakefx_game.player.PlayerPOJO;
-import snakefx_game.view.player.SnakeRactangles;
+import main.java.listeners.KeyPressedListener;
+import main.java.player.PlayerPOJO;
+import main.java.view.player.SnakeRactangles;
 
 /**
  *
