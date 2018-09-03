@@ -17,13 +17,6 @@ repositories {
 
 apply plugin: 'javafx-gradle-plugin'
 
-jar {
-  manifest {
-    attributes(
-      "Class-Path": configurations.compile.collect { it.getName() }.join(' '))
-  }
-}
-
 jfx {
     // minimal requirement for jfxJar-task
     sourceSets.main.java.srcDirs = ['src']
