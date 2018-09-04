@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" fx:id="root" prefHeight="600" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.101" fx:controller="main.java.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="600" prefWidth="600" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.FXMLDocumentController">
    <children>
       <Pane fx:id="gameBoard" layoutX="8.0" layoutY="40.0" prefHeight="539.0" prefWidth="584.0" style="-fx-background-color: #B1B1B1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
          <children>
-            <Button fx:id="startButton" layoutX="361.0" layoutY="255.0" mnemonicParsing="false" onAction="#onStartPressed" text="Start" />
+            <Button fx:id="startButton" layoutX="395.0" layoutY="255.0" mnemonicParsing="false" onAction="#onStartPressed" text="Start" />
             <TextField fx:id="nameField" layoutX="212.0" layoutY="255.0" promptText="Name" />
          </children></Pane>
       <Label layoutX="417.0" layoutY="14.0" text="Score:" />
-      <Label fx:id="score" layoutX="456.0" layoutY="14.0" text="0" />
+      <Label fx:id="score" layoutX="459.0" layoutY="14.0" text="0" />
       <Label layoutX="482.0" layoutY="14.0" text="HiScore:" />
-      <Label fx:id="hiScore" layoutX="526.0" layoutY="14.0" text="0" />
+      <Label fx:id="hiScore" layoutX="537.0" layoutY="14.0" text="0" />
       <Button fx:id="restartButton" layoutX="274.0" layoutY="10.0" mnemonicParsing="false" onAction="#onRestartPressed" text="Restart" />
    </children>
 </AnchorPane>
