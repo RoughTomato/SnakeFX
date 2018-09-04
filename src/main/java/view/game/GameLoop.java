@@ -32,12 +32,24 @@ public class GameLoop {
     private final int CHAR_LIMIT = 18;
     private KeyPressedListener keyListener;
 
-    public GameLoop(GameLoopCapsule gameloop){
-
+    public GameLoop(GameLoopBuilder.GameLoopCapsule gameloop){
+        this.gameBoard = gameloop.gameBoard;
+        this.restartButton = gameloop.restartButton;
+        this.startButton = gameloop.startButton;
+        this.score = gameloop.score;
+        this.nameField = gameloop.nameField;
+        this.hiScore = gameloop.hiScore;
+        this.scene = gameloop.scene;
     }
 
-    public GameLoop(GameLoop gameLoop) {
-
+    public GameLoop(GameLoop gameloop) {
+        this.gameBoard = gameloop.gameBoard;
+        this.restartButton = gameloop.restartButton;
+        this.startButton = gameloop.startButton;
+        this.score = gameloop.score;
+        this.nameField = gameloop.nameField;
+        this.hiScore = gameloop.hiScore;
+        this.scene = gameloop.scene;
     }
 
     public void StartPressed(ActionEvent event) {
