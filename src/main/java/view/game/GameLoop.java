@@ -3,7 +3,7 @@ package main.java.view.game;
 import javafx.animation.AnimationTimer;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,11 +18,6 @@ import java.util.logging.Logger;
 
 public class GameLoop {
 
-    private SnakeRactangles snake;
-    private PlayerPOJO player;
-    private AnimationTimer timer;
-    private final int CHAR_LIMIT = 18;
-    private KeyPressedListener keyListener;
     private Pane gameBoard;
     private Button restartButton;
     private Button startButton;
@@ -30,8 +25,14 @@ public class GameLoop {
     private TextField nameField;
     private Label hiScore;
     private Scene scene;
-    
-    public GameLoop(){
+
+    private SnakeRactangles snake;
+    private PlayerPOJO player;
+    private AnimationTimer timer;
+    private final int CHAR_LIMIT = 18;
+    private KeyPressedListener keyListener;
+
+    public GameLoop(GameLoopCapsule gameloop){
 
     }
 
@@ -107,4 +108,6 @@ public class GameLoop {
             }
         });
     }
+
+
 }
