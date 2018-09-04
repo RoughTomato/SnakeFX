@@ -12,7 +12,6 @@ import main.java.FXMLDocumentController;
 import main.java.listeners.KeyPressedListener;
 import main.java.player.PlayerPOJO;
 import main.java.view.player.SnakeRactangles;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,8 +23,8 @@ public class GameLoop {
     private Label score;
     private TextField nameField;
     private Label hiScore;
-    private Scene scene;
 
+    private Scene scene;
     private SnakeRactangles snake;
     private PlayerPOJO player;
     private AnimationTimer timer;
@@ -39,7 +38,6 @@ public class GameLoop {
         this.score = gameloop.score;
         this.nameField = gameloop.nameField;
         this.hiScore = gameloop.hiScore;
-        this.scene = gameloop.scene;
     }
 
     public GameLoop(GameLoop gameloop) {
@@ -49,13 +47,13 @@ public class GameLoop {
         this.score = gameloop.score;
         this.nameField = gameloop.nameField;
         this.hiScore = gameloop.hiScore;
-        this.scene = gameloop.scene;
     }
 
     public void startPressed(ActionEvent event) {
         nameField.setVisible(false);
         startButton.setVisible(false);
         player = new PlayerPOJO(nameField.getText());
+        scene = gameBoard.getScene();
         snake = new SnakeRactangles(5,gameBoard);
         keyListener = new KeyPressedListener(scene);
         mainGameLoop();

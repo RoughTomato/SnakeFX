@@ -50,12 +50,6 @@ public class GameLoopBuilder {
         return this;
     }
 
-    public GameLoopBuilder havingScene(Scene scene) {
-        capsule.scene = scene;
-        capsule.sceneSet = true;
-        return this;
-    }
-
     private boolean canBuild() {
         boolean canBuild = false;
         if(capsule.allSet()) {
@@ -88,8 +82,6 @@ public class GameLoopBuilder {
         public boolean nameFieldSet;
         public Label hiScore;
         public boolean hiScoreSet;
-        public Scene scene;
-        public boolean sceneSet;
         public Set<Boolean> values;
 
         /**
@@ -102,7 +94,7 @@ public class GameLoopBuilder {
             boolean isAllSet = false;
             this.values = new HashSet<Boolean>(Arrays.asList(gameBoardSet,
                     restartButtonSet, startButtonSet, scoreSet, nameFieldSet,
-                    hiScoreSet, sceneSet));
+                    hiScoreSet));
             if(!this.values.contains(false)){
                 isAllSet = true;
             }

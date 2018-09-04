@@ -45,7 +45,8 @@ public class FXMLDocumentController implements Initializable {
     private Button restartButton;
 
     private GameLoop gameLoop;
-    
+    private GameLoopBuilder gameBuilder;
+
     @FXML
     void onRestartPressed(ActionEvent event) {
         gameLoop.restartPressed(event);
@@ -53,22 +54,20 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     void onStartPressed(ActionEvent event) {
+        gameBuilder = new GameLoopBuilder();
+        gameBuilder.havingGameBoard(this.gameBoard)
+                .havingHiScore(this.hiScore)
+                .havingScore(this.score)
+                .havingNameField(this.nameField)
+                .havingRestartButton(this.restartButton)
+                .havingStartButton(this.startButton);
+
+        gameLoop = new GameLoop(gameBuilder.build());
         gameLoop.startPressed(event);
     }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        GameLoopBuilder gameBuilder = new GameLoopBuilder();
-
-        gameBuilder.havingScene(this.gameBoard.getScene())
-                                    .havingGameBoard(this.gameBoard)
-                                    .havingHiScore(this.hiScore)
-                                    .havingScore(this.score)
-                                    .havingNameField(this.nameField)
-                                    .havingRestartButton(this.restartButton)
-                                    .havingStartButton(this.startButton);
-
-        gameLoop = new GameLoop(this.gameLoop);
     }
 
 }
