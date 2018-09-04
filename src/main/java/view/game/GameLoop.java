@@ -52,17 +52,16 @@ public class GameLoop {
         this.scene = gameloop.scene;
     }
 
-    public void StartPressed(ActionEvent event) {
+    public void startPressed(ActionEvent event) {
         nameField.setVisible(false);
         startButton.setVisible(false);
         player = new PlayerPOJO(nameField.getText());
-        scene = gameBoard.getScene();
         snake = new SnakeRactangles(5,gameBoard);
         keyListener = new KeyPressedListener(scene);
         mainGameLoop();
     }
 
-    public void RestartPressed(ActionEvent event) {
+    public void restartPressed(ActionEvent event) {
         timer.stop();
         timer = null;
         this.player.setScore(0);

@@ -16,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import main.java.listeners.KeyPressedListener;
 import main.java.player.PlayerPOJO;
+import main.java.view.game.GameLoop;
+import main.java.view.game.GameLoopBuilder;
 import main.java.view.player.SnakeRactangles;
 
 /**
@@ -42,28 +44,31 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button restartButton;
 
-    private Scene scene;
-    private SnakeRactangles snake;
-    private PlayerPOJO player;
-    private AnimationTimer timer;
-    private final int CHAR_LIMIT = 18;
-    private KeyPressedListener keyListener;
+    private GameLoop gameLoop;
     
     @FXML
     void onRestartPressed(ActionEvent event) {
-
+        gameLoop.restartPressed(event);
     }
     
     @FXML
     void onStartPressed(ActionEvent event) {
-
-
+        gameLoop.startPressed(event);
     }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        GameLoopBuilder gameBuilder = new GameLoopBuilder();
 
-    } 
-    
+        gameBuilder.havingScene(this.gameBoard.getScene())
+                                    .havingGameBoard(this.gameBoard)
+                                    .havingHiScore(this.hiScore)
+                                    .havingScore(this.score)
+                                    .havingNameField(this.nameField)
+                                    .havingRestartButton(this.restartButton)
+                                    .havingStartButton(this.startButton);
+
+        gameLoop = new GameLoop(this.gameLoop);
+    }
 
 }
